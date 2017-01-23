@@ -1,0 +1,21 @@
+<div>
+    <md-toolbar color="default">
+        <a  [routerLink]="['/']">SpectroServer</a>
+        <span class="example-fill-remaining-space"></span>
+        <div [hidden]="user">
+            <a md-raised-button color="primary" [routerLink]="['/login']" >Login</a>
+            <a  md-raised-button color="primary" [routerLink]="['/signup']">Sign up</a>
+        </div>
+
+        <div [hidden]="!user">
+            <span>{{user  | displayName }}</span>
+            <button md-button (click)="logout()">Logout</button>
+        </div>
+    </md-toolbar>
+
+
+    <div class="container-fluid">
+    <router-outlet></router-outlet>
+    </div>
+
+</div>

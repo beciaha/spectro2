@@ -1,0 +1,18 @@
+ UploadFS.readAsArrayBuffer(function (data, file) {
+        // pick from an object only: name, type and size
+        const file = {
+            name: data.name,
+            type: data.type,
+            size: data.size,
+        };
+
+        const upload = new UploadFS.Uploader({
+            data,
+            file,
+            store: ImagesStore,
+            onError: reject,
+            onComplete: resolve
+        });
+
+        upload.start();
+    });

@@ -11,6 +11,6 @@ Meteor.startup(() => {
    platformBrowserDynamic().bootstrapModule(AppModule);
 });
 
-Meteor.call('runCode', "value x", "value y", function (err, response) {
+Meteor.call('runCode', "10", "value y", function (err, response) {
    console.log(response);
 });

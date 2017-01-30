@@ -16,7 +16,7 @@ Meteor.startup(function () {
             // to queue other method calls (see Meteor docs)
             this.unblock();
             var future=new Future();
-            var command="ls";
+            var command="/usr/local/bin/Rscript\ server/my_rscript.R \10";
             exec(command,function(error,stdout,stderr){
                 if(error){
                     console.log(error);

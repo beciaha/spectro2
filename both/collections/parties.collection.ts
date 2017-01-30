@@ -1,5 +1,3 @@
-
-import { MongoObservable } from "meteor-rxjs";
-import {Task} from "../models/task.model";
-
-export const TasksCollection = new MongoObservable.Collection<Task>("task-collection");
+import { Party } from '../models/party.model';
+import { MongoObservable } from 'meteor-rxjs';
+export const Parties = new MongoObservable.Collection<Party>('parties');

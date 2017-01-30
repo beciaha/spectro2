@@ -1,27 +1,35 @@
-import {DemoCollection} from "../../../both/collections/demo.collection";
 import {Images} from "../../../both/collections/images.collection";
-import {Demo} from "../../../both/models/demo.model";
+import { Parties } from '../../../both/collections/parties.collection';
+import { Party } from '../../../both/models/party.model';
 import {Image} from "../../../both/models/image.model";
 import './imports/publications/images';
+import { Meteor } from 'meteor/meteor';
 export class Main {
+
   start(): void {
     this.initFakeData();
   }
 
   initFakeData(): void {
-    if (DemoCollection.find({}).cursor.count() === 0) {
-      const data: Demo[] = [{
-        name: "Dotan",
-        age: 25
-      }, {
-        name: "Liran",
-        age: 26
-      }, {
-        name: "Uri",
-        age: 30
-      }];
-      data.forEach((demo: Demo) => DemoCollection.insert(demo));
 
+    if (Parties.find().cursor.count() === 0) {
+      const parties: Party[] = [{
+        name: 'Dubstep-Free Zone',
+        description: 'Can we please just for an evening not listen to dubstep.',
+        location: 'Palo Alto'
+      }, {
+        name: 'All dubstep all the time',
+        description: 'Get it on!',
+        location: 'Palo Alto'
+      }, {
+        name: 'Savage lounging',
+        description: 'Leisure suit required. And only fiercest manners.',
+        location: 'San Francisco'
+      }];
+
+      parties.forEach((party: Party) => Parties.insert(party));
     }
   }
+
+
 }

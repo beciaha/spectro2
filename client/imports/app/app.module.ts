@@ -5,7 +5,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { DemoComponent } from "./demo/demo.component";
-import { DemoDataService } from "./demo/demo-data.service";
+
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
 import { routes } from './app.routes';
 import { AUTH_DECLARATIONS } from "./auth/index";
@@ -14,8 +14,9 @@ import { MaterialModule } from "@angular/material";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SHARED_DECLARATIONS } from './shared';
 import { IMAGE_DECLARATIONS } from './image';
+import { PARTIES_DECLARATIONS } from './parties';
 import { FileDropModule } from "angular2-file-drop";
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   // Components, Pipes, Directive
   declarations: [
@@ -23,7 +24,8 @@ import { FileDropModule } from "angular2-file-drop";
     DemoComponent,
     ...AUTH_DECLARATIONS,
       ...IMAGE_DECLARATIONS,
-    ...SHARED_DECLARATIONS
+    ...SHARED_DECLARATIONS,
+    ...PARTIES_DECLARATIONS
   ],
   // Entry Components
   entryComponents: [
@@ -31,7 +33,7 @@ import { FileDropModule } from "angular2-file-drop";
   ],
   // Providers
   providers: [
-    DemoDataService,
+
     ...ROUTES_PROVIDERS
 
   ],
@@ -43,7 +45,10 @@ import { FileDropModule } from "angular2-file-drop";
     RouterModule.forRoot(routes),
     AccountsModule,
     MaterialModule.forRoot(),
-      FileDropModule
+      FileDropModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
   // Main Component

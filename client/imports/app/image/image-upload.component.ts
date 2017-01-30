@@ -9,8 +9,10 @@ import {MeteorObservable} from "meteor-rxjs";
 import {Component, OnInit} from '@angular/core';
 import {Subject, Subscription, Observable} from "rxjs";
 import {Thumb} from "../../../../both/models/image.model";
-import {Thumbs} from "../../../../both/collections/images.collection";
+import {Thumbs, ImagesStore} from "../../../../both/collections/images.collection";
 import style from './image-upload.component.scss';
+import { UploadFS } from 'meteor/jalik:ufs';
+
 
 @Component({
     selector: 'image-upload',
@@ -50,20 +52,35 @@ thumbsSubscription: Subscription;
     }
     onFileDrop(file: File): void {
         this.uploading = true;
-        console.log(`jestem tam? `);
+
         upload(file)
             .then((result) => {
                 this.uploading = false;
-                console.log(`jestem tu? `);
-                this.addFile(result);
-                console.log(`dodalem zdjecie `);
+
+             //   this.addFile(result);
+
             })
             .catch((error) => {
                 this.uploading = false;
                 console.log(`Something went wrong!`, error);
             });
     }
+    file(data: File): void {
 
+        UploadFS.selectFiles(function(file){
+            let photo = {
+                name: file.name,
+                size: file.size,
+                type: file.type
+            };
+            let worker = new UploadFS.Uploader({
+                store: ImagesStore,
+                data: file,
+                file: photo
+            });
+            worker.start();
+        });
+    }
     addFile(file) {
 
         this.filesArray.push(file._id);
@@ -71,13 +88,7 @@ thumbsSubscription: Subscription;
         this.onFile.emit(file._id);
 
     }
-    addFile2(file) {
 
-        this.filesArray.push(upload2(file)._id);
-        this.files.next(this.filesArray);
-        this.onFile.emit(upload2(file)._id);
-
-    }
     reset() {
         this.filesArray = [];
         this.files.next(this.filesArray);

@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<form [formGroup]="addForm" (ngSubmit)="addParty()">
+    <label>Name</label>
+    <input type="text" formControlName="name">
+
+    <label>Description</label>
+    <input type="text" formControlName="description">
+
+    <label>Location</label>
+    <input type="text" formControlName="location">
+
+    <button type="submit">Add</button>
+</form>

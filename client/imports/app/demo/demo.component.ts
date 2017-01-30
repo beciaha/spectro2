@@ -1,15 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { DemoDataService } from "./demo-data.service";
-import { Demo } from "../../../../both/models/demo.model";
-import { DemoCollection } from "../../../../both/collections/demo.collection";
-import { Task } from "../../../../both/models/task.model";
+import { Parties } from "../../../../both/collections/parties.collection";
 import template from "./demo.component.html";
 import style from "./demo.component.scss";
 import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { MeteorObservable } from 'meteor-rxjs';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
+import { Party } from '../../../../both/models/party.model';
 
 @Component({
   selector: "demo",
@@ -19,22 +17,26 @@ import { Subscription } from 'rxjs/Subscription';
 @InjectUser('user')
 export class DemoComponent implements OnInit {
   greeting: string;
-  data: Observable<Demo[]>;
+
   user: Meteor.User;
-  tasks: Observable<Task[]>;
+  parties: Observable<Party[]>;
   images: string[] = [];
   imagesSubs: Subscription;
-  constructor(private demoDataService: DemoDataService) {
+  constructor() {
     this.greeting = "Statistical Tools for Spectroscopy Mass Data";
-   // this.data = DemoCollection.find({}).zone();
+
+    this.parties = Parties.find({}).zone();
+ //   this.data = DemoCollection.find({}).zone();
     this.url= "./images/spektrum.png";
 
   }
 
   ngOnInit() {
-    this.data = this.demoDataService.getData().zone();
+    //this.data = this.demoDataService.getData().zone();
     this.imagesSubs = MeteorObservable.subscribe('images').subscribe();
-
+    Meteor.call('runCode', function (err, response) {
+      console.log(response);
+    });
   }
   onImage(imageId: string) {
     this.images.push(imageId);

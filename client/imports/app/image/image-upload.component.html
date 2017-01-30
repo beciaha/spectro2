@@ -6,8 +6,8 @@
              (onFileDrop)="onFileDrop($event)">
             <div>Drop an image to here</div>
         </div>
-        <input type="file" (change)="onFileDrop($event)"/>
 
+        <input type="submit" value="Choose File" (click) = "file($event)" name="submit">
             <div *ngIf="thumbs" class="thumbs">
                 <div *ngFor="let thumb of thumbs | async" class="thumb">
                     <img [src]="thumb.url"/>

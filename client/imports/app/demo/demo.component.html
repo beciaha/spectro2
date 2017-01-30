@@ -8,14 +8,10 @@
 <div *ngIf="user">
     <div> Upload your file</div>
     <image-upload #upload (onFile)="onImage($event)"></image-upload>
-<ul>
-    <li *ngFor="let item of data | async">
-        {{item.name}} ({{item.age}})
-    </li>
-</ul>
-    <ul>
-        <li *ngFor="let item of tasks | async">
-            {{item.todo}}
-</li>
-        </ul>
+
+
+    <parties-form></parties-form>
+    <li *ngFor="let party of parties | async">
+        {{party.name}}
+
     </div>

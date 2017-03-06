@@ -5,9 +5,23 @@
 <img src="{{url}}" height="200" width="500"/>
 </div>
 
-<div *ngIf="user">
-    <div> Upload your file</div>
-    <image-upload #upload (onFile)="onImage($event)"></image-upload>
+<div *ngIf="user" class="order">
+
+    <ol class="left">
+        <li>
+            <div class="blue"> Upload your file</div>
+            <image-upload #upload (onFile)="onImage($event)"></image-upload>
+        </li>
+        <li>
+            <div class="blue">Choose statistic</div>
+            <form class="left" action="/action_page.php" method="get">
+                <input type="checkbox" name="vehicle" value="Bike"> Student's t-test<br>
+                <input type="checkbox" name="vehicle" value="Car" checked> Analysis of variance (ANOVA) <br>
+                <input type="submit" class="btn" value="Submit">
+            </form>
+        </li>
+    </ol>
+
 
 
     <parties-form></parties-form>
@@ -15,3 +29,5 @@
         {{party.name}}
 
     </div>
+
+

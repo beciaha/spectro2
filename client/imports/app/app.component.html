@@ -1,21 +1,55 @@
 <div>
-    <md-toolbar color="default">
-        <a  [routerLink]="['/']">SpectroServer</a>
-        <span class="example-fill-remaining-space"></span>
-        <div [hidden]="user">
-            <a md-raised-button color="primary" [routerLink]="['/login']" >Login</a>
-            <a  md-raised-button color="primary" [routerLink]="['/signup']">Sign up</a>
-        </div>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <!-- Grupowanie "marki" i przycisku rozwijania mobilnego menu -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Rozwiń nawigację</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a  id="logo" [routerLink]="['/']">SpectroServer</a>
+            </div>
 
-        <div [hidden]="!user">
-            <span>{{user  | displayName }}</span>
-            <button md-button (click)="logout()">Logout</button>
-        </div>
-    </md-toolbar>
+            <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div [hidden]="!user">
+                <ul class="nav navbar-nav">
+                    <li class="active"> <a  [routerLink]="['/new']">New project</a></li>
+                    <li><a href="#">Your data</a></li>
+                    <li><a href="#"></a></li>
+
+                </ul>
+                    </div>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <span class="example-fill-remaining-space"></span>
+                    <div [hidden]="user">
+                        <a md-raised-button color="primary" [routerLink]="['/login']" >Login</a>
+                        <a  md-raised-button color="primary" [routerLink]="['/signup']">Sign up</a>
+                    </div>
+
+                    <div [hidden]="!user">
+
+
+                        <span>{{user  | displayName }}</span>
+                        <button md-button (click)="logout()">Logout</button>
+                    </div>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+
 
 
     <div class="container-fluid">
     <router-outlet></router-outlet>
     </div>
 
+</div>
+
+<div class="footer">
+    © 2017 Poznań University of technology
 </div>

@@ -4,10 +4,10 @@
              [ngClass]="{'file-is-over': fileIsOver, 'file-uploading': uploading}"
              (fileOver)="fileOver($event)"
              (onFileDrop)="onFileDrop($event)">
-            <div>Drop an image to here</div>
+            <div>Drop a file to here</div>
         </div>
 
-        <input type="submit" value="Choose File" (click) = "file($event)" name="submit">
+        <input type="submit" class="btn" value="Choose File" (click) = "file($event)" name="submit">
             <div *ngIf="thumbs" class="thumbs">
                 <div *ngFor="let thumb of thumbs | async" class="thumb">
                     <img [src]="thumb.url"/>

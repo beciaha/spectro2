@@ -10,13 +10,14 @@ Meteor.startup(function () {
 
     // Server methods
     Meteor.methods({
+        /*
         runCode: function (x, y) {
             // This method call won't return immediately, it will wait for the
             // asynchronous code to finish, so we call unblock to allow this client
             // to queue other method calls (see Meteor docs)
             this.unblock();
             var future=new Future();
-            var command="/usr/local/bin/Rscript\ server/my_rscript.R \10";
+            var command="/Library/Frameworks/R.framework/Resources/bin/Rscript\ server/my_rscript.R \10";
             exec(command,function(error,stdout,stderr){
                 if(error){
                     console.log(error);
@@ -26,5 +27,7 @@ Meteor.startup(function () {
             });
             return future.wait();
         }
+        */
     });
 });
+

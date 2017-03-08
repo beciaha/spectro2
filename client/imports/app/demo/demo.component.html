@@ -14,9 +14,10 @@
         </li>
         <li>
             <div class="blue">Choose statistic</div>
-            <form class="left" action="/action_page.php" method="get">
+            <form class="left" action="/action_page.php" method="get" (ngSubmit)="statistic($event)">
                 <input type="checkbox" name="vehicle" value="Bike"> Student's t-test<br>
-                <input type="checkbox" name="vehicle" value="Car" checked> Analysis of variance (ANOVA) <br>
+                <input type="checkbox" name="vehicle" value="Car" > Analysis of variance (ANOVA) <br>
+                <input type="checkbox" name="vehicle" value="count" checked> Average <br>
                 <input type="submit" class="btn" value="Submit">
             </form>
         </li>
@@ -24,10 +25,6 @@
 
 
 
-    <parties-form></parties-form>
-    <li *ngFor="let party of parties | async">
-        {{party.name}}
 
-    </div>
 
 

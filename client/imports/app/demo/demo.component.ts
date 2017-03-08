@@ -37,6 +37,7 @@ export class DemoComponent implements OnInit {
     Meteor.call('runCode', function (err, response) {
       console.log(response);
     });
+
   }
   onImage(imageId: string) {
     this.images.push(imageId);
@@ -45,4 +46,9 @@ export class DemoComponent implements OnInit {
 
     this.imagesSubs.unsubscribe();
   }
+  statistic(event) {
+    console.log(event);
+
+  }
+
 }

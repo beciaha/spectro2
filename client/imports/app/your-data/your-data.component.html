@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row main">
+        <div class="main-login main-center">
+
+<div *ngIf="user">
+    <div>Your data</div>
+
+
+</div>
+
+    <div class="col-md-6 left" >
+<li *ngFor="let image of images| async">
+    <input type="radio" name="radio" id="radio6x" />
+    <label for="radio6x">{{image.name}}</label>
+
+
+
+
+    </li>
+
+    </div>
+            </div>
+        </div>
+    </div>

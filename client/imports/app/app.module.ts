@@ -6,7 +6,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import {HomeComponent } from "./home/home.component";
 import { DemoComponent } from "./demo/demo.component";
-
+import { YourComponent } from "./your-data/your-data.component";
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
 import { routes } from './app.routes';
 import { AUTH_DECLARATIONS } from "./auth/index";
@@ -24,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     DemoComponent,
 HomeComponent,
+      YourComponent,
     ...AUTH_DECLARATIONS,
       ...IMAGE_DECLARATIONS,
     ...SHARED_DECLARATIONS,
